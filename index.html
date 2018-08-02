@@ -1,0 +1,38 @@
+<html>
+<body>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<div id="sankey_multiple" style="width: 900px; height: 300px;"></div>
+
+<script type="text/javascript">
+  google.charts.load("current", {packages:["sankey"]});
+  google.charts.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'From');
+    data.addColumn('string', 'To');
+    data.addColumn('number', 'Users');
+    data.addRows([
+       [ 'Sent', 'Received', 809 ],
+       [ 'Received', 'Opened', 516 ],
+       // [ 'Received', 'Did not open', 293 ],
+       [ 'Opened', 'Clicked', 137 ],
+       // [ 'Opened', 'Did not click', 379 ],
+       [ 'Clicked', 'Visited', 101 ],
+       // [ 'Clicked Link', 'Did not visit app', 36 ],
+       [ 'Visited', 'Logged in', 63 ],
+       // [ 'Visited App', 'Left', 38 ]
+    ]);
+
+    // Set chart options
+    var options = {
+      width: 600,
+    };
+
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.Sankey(document.getElementById('sankey_multiple'));
+    chart.draw(data, options);
+   }
+</script>
+</body>
+</html>
